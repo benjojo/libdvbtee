@@ -1576,25 +1576,19 @@ int parse::feed(int count, uint8_t* p_data)
 			if (sync_offset == 188) {
 				sync_offset = 0;
 				i--;
-				__log_printf(stderr, "\nSYNC LOSS\n\n");
+				//__log_printf(stderr, "\nSYNC LOSS\n\n");
 			}
 			statistics.parse(p, &pkt_stats);
-			__log_printf(stderr, ".\t");
+			//	__log_printf(stderr, ".\t");
 		}
 
-		if (sync_offset) __log_printf(stderr, "\nSYNC LOSS\n\n");
+		//if (sync_offset) __log_printf(stderr, "\nSYNC LOSS\n\n");
 #if 0
 		/* demux & statistics for entire read TS */
 		statistics.push(p, &pkt_stats);
 		demuxer.push(pkt_stats.pid, p);
 #endif
 		if (pkt_stats.tei) {
-#ifndef QUIET_TEI
-			if (!tei_count)
-				__log_printf(stderr, "\tTEI");//"%s: TEI detected, dropping packet\n", __func__);
-			else if (tei_count % 100 == 0)
-				__log_printf(stderr, ".");
-#endif
 			tei_count++;
 			if (!process_err_pkts) continue;
 		}
@@ -1736,7 +1730,7 @@ int parse::feed(int count, uint8_t* p_data)
 static void dvbpsi_message(dvbpsi_t *handle, const dvbpsi_msg_level_t level, const char* msg)
 {
 	(void)handle;
-
+	return;
 	const char *status;
 	switch(level)
 	{

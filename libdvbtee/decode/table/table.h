@@ -129,7 +129,7 @@ public:
 		ssize_t s = V.size();
 		if (s > 1) __log_printf(stderr, "TABLE: %02x %zu collected, something is wrong\n", tableid, s);
 		if (s) {
-			__log_printf(stderr, "UPDATING TABLE %02x\n", tableid);
+//			__log_printf(stderr, "UPDATING TABLE %02x\n", tableid);
 			C *t = (C*)V[s-1];
 			t->reset();
 			t->store(p_table);
